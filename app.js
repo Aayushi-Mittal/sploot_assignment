@@ -1,28 +1,24 @@
 const express = require('express')
+const mongoose = require("mongoose");
 const app = express()
-const port = 3000
 
-// app.post('/api/signup', (req, res) => {
-//     res.json({ message: 'signup api' });
-// });
+const authRoute = require("./routes/auth");
+const userRoute = require("./routes/users");
+const articleRoute = require("./routes/articles");
+const port = 3000;
 
-// app.post('/api/login', (req, res) => {
-//     res.json({ message: 'Login api' });
-// });
+mongoose.connect('mongodb://localhost/myapp', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+    .then(() => {
+        console.log('Connected to MongoDB');
+    })
+    .catch(err => {
+        console.error('Failed to connect to MongoDB:', err);
+    });
 
-// app.post('/api/users/:userId/articles', (req, res) => {
-//     const userId = req.params.id;
-//     res.json({ message: `create an Article for user with ${userId}` });
-// });
 
-app.get('/api/articles', (req, res) => {
-    res.json({ message: `Get all articles` });
-});
-
-// app.put('api/users/:userId', (req, res) => {
-//     const userId = req.params.id;
-//     res.json({ message: `Update user with ${userId}` });
-// });
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
+app.use("/api/articles", articleRoute);
 
 
 app.listen(port, () => {
