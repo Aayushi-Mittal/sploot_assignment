@@ -1,13 +1,14 @@
 const express = require('express')
 const mongoose = require("mongoose");
 const app = express()
+app.use(express.json())
 
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const articleRoute = require("./routes/articles");
 const port = 3000;
 
-mongoose.connect('mongodb://localhost/myapp', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect('mongodb://localhost/myapp', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB');
     })
