@@ -8,7 +8,7 @@ const userRoute = require("./routes/users");
 const articleRoute = require("./routes/articles");
 const port = 3000;
 
-mongoose.connect('mongodb://localhost/myapp', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB');
     })
