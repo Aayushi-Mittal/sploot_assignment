@@ -1,13 +1,13 @@
 # Backend Assignment
 
+Postman Documentation: https://documenter.getpostman.com/view/14162389/2s93eR3aKC
+
 ### You need to create Backend RESTful APIs in NodeJS with any framework like ExpressJS/NestJS and MongoDB Database.
 
 This service should have a user who will be able to signup and login. Only The authenticated (logged in) user will be able to perform actions like creating an Article, Retrieving all Articles and updating their own user profile. You can set the expiry of the user session according to you.
 
 User Resource will have email, password, name and age. Email will be unique.
 Article Resource will have a title and description. One Article can have only one author (user)
-
-<br>
 
 #### Api to signup a user with email and password.
 
@@ -45,8 +45,6 @@ This protected Api should be authenticated using the JWT in the header of reques
 #### API to update user profile. Only name and age are editable.
 	
 	Endpoint: api/users/:userId
-
-<br>
 
 ### Points to Remember:
 Standard response format of the APIs
