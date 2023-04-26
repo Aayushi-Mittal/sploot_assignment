@@ -3,7 +3,7 @@ const User = require("../models/User");
 const Article = require("../models/Article");
 
 //Create Article
-router.post("/", async (req, res) => {
+router.post("/new", async (req, res) => {
   const newArticle = new Article(req.body);
   try {
     const savedArticle = await newArticle.save();
@@ -52,6 +52,23 @@ router.delete("/:id", async (req, res) => {
     } else {
       res.status(401).json("You can delete only your articles!");
     }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+//Get all Articles
+router.get("/", async (req, res) => {
+  const username = req.query.user;
+  try {
+    let article;
+    if (username) {
+      article = await Article.find({ username });
+    } else {
+      article = await Article.findAll();
+    }
+    res.status(200).json(article);
   } catch (err) {
     res.status(500).json(err);
   }
