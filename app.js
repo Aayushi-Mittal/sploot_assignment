@@ -6,7 +6,7 @@ app.use(express.json())
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const articleRoute = require("./routes/articles");
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 mongoose.connect('mongodb+srv://aayushimittal088:4G1AeVwsczl5WtXs@cluster0.711phjg.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
